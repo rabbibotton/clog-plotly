@@ -1,0 +1,4 @@
+<data id="I3869928661" data-in-package="clog-plotly" data-custom-slots="" data-clog-next-id="3" data-clog-title="test-panel"></data><div style="width: 400px; height: 300px; box-sizing: content-box; position: absolute; left: 100px; top: 25px;" data-clog-type="clog-plotly" data-clog-composite-control="t" data-clog-name="clog-plotly-1" data-on-create="(clog-plotly::json-plotly target
+  &quot;[{x: [1, 2, 3, 4, 5],
+	   y: [1, 2, 4, 8, 16]}]&quot;
+	&quot;{ margin: { t: 0 } }&quot;)" class="w3-border"></div>
