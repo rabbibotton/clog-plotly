@@ -72,9 +72,34 @@
 ;; Methods - clog-plotly-element
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+(defgeneric json-plotly (clog-plotly-element json-data json-plotly)
+  (:documentation "Plot with plotly json-data and json-layout"))
+
 (defmethod json-plotly ((obj clog-plotly-element) json-data json-layout)
   (js-execute obj (format nil "Plotly.newPlot(~A, ~A, ~A)"
                           (script-id obj) json-data json-layout)))
+
+(defgeneric json-react (clog-plotly-element json-data json-plotly)
+  (:documentation "Plot with plotly json-data and json-layout"))
+
+(defmethod json-react ((obj clog-plotly-element) json-data json-layout)
+  (js-execute obj (format nil "Plotly.newPlot(~A, ~A, ~A)"
+                          (script-id obj) json-data json-layout)))
+
+(defgeneric restyle-plotly (clog-plotly-element json-update trace-indices)
+  (:documentation "Restyle plotly with json-update and trace-indices."))
+
+(defmethod restyle-plotly ((obj clog-plotly-element) json-update trace-indices)
+  (js-execute obj (format nil "Plotly.restyle(~A,~A,~A)"
+                               (script-id obj) json-update trace-indices)))
+
+(defgeneric relayout-plotly (clog-plotly-element json-update)
+  (:documentation "Relayout plotly with json-update and trace-indices."))
+
+(defmethod relayout-plotly ((obj clog-plotly-element) json-update)
+  (js-execute obj (format nil "Plotly.relayout(~A,~A)"
+                               (script-id obj) json-update)))
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Implementation - js binding
@@ -100,8 +125,11 @@
   ;; and vertically our div on the screen.
   (let* ((layout (create-panel-box-layout body))
          (test   (create-clog-plotly-element (center-panel layout))))
-    (declare (ignore test))
-    (center-children (center-panel layout))))
+    (center-children (center-panel layout))
+    (clog-plotly::json-plotly test
+                              "[{x: [1, 2, 3, 4, 5],
+                                 y: [1, 2, 4, 8, 16]}]"
+                              "{ margin: { t: 0 } }")))
 
 (defun start-test ()
   (initialize 'on-test-clog-plotly
