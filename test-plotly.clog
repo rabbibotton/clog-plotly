@@ -1,4 +1,4 @@
-<data id="I3869929495" data-in-package="clog-plotly" data-custom-slots="" data-clog-next-id="3" data-clog-title="test-panel"></data><div style="width: 400px; height: 300px; box-sizing: content-box; position: absolute; left: 100px; top: 25px;" data-clog-type="clog-plotly" data-clog-composite-control="t" data-clog-name="clog-plotly-1" data-on-create="(clog-plotly::json-plotly target
+<data id="I3870083903" data-in-package="clog-plotly" data-custom-slots="" data-clog-next-id="5" data-clog-title="test-panel"></data><div style="width: 400px; height: 300px; box-sizing: content-box; position: absolute; left: 57px; top: 23px;" data-clog-type="clog-plotly" data-clog-composite-control="t" data-clog-name="clog-plotly-1" data-on-create="(clog-plotly::new-plot-plotly target
 &quot;[
         {
             type: 'scatter',
@@ -29,4 +29,7 @@
                 yref: 'paper'
             }
         ]
-    }&quot;)" class="w3-border"></div>
+    }&quot;)" class="w3-border" data-on-plotly-to-image="(create-img panel :url-src data)
+"></div><button data-clog-type="button" data-clog-name="button-3" style="box-sizing: content-box; position: absolute; left: 482px; top: 92px; width: 120px;" data-on-click="(to-image-plotly (clog-plotly-1 panel) &quot;{format: 'png', width: 800, height: 600}&quot;)
+">get png</button><button data-clog-type="button" data-clog-name="button-4" style="box-sizing: content-box; position: absolute; left: 482px; top: 131px; width: 120px;" data-on-click="(download-image-plotly (clog-plotly-1 panel) 
+  &quot;{format: 'png', width: 800, height: 600, filename: 'newplot'}&quot;)">download png</button>

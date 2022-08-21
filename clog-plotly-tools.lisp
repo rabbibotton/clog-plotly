@@ -51,7 +51,25 @@
            ;;                 ;; code to attach functionality if your create for design time
            ;;                 )
            ;; events handled
-           :events         (,@clog-tools::*events-element*)
+           :events         ((:name        "on-plotly-to-image"
+                             :package     "clog-plotly"
+                             :parameters  "target data")
+                            (:name        "on-plotly-after-plot"
+                             :package     "clog-plotly"
+                             :parameters  "target")
+                            (:name        "on-plotly-auto-size"
+                             :package     "clog-plotly"
+                             :parameters  "target")
+                            (:name        "on-plotly-deselect"
+                             :package     "clog-plotly"
+                             :parameters  "target")
+                            (:name        "on-plotly-redraw"
+                             :package     "clog-plotly"
+                             :parameters  "target")
+                            (:name        "on-plotly-animated"
+                             :package     "clog-plotly"
+                             :parameters  "target")
+                            ,@clog-tools::*events-element*)
            ;; properties handled
            :properties     (,@clog-tools::*props-location*
                             ,@clog-tools::*props-with-height*
