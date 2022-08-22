@@ -3,7 +3,7 @@
 (progn
   (clog-tools:add-supported-controls
    (list '(:name           "group"
-           :description    "clog-plotly Controls"
+           :description    "Plotly Controls"
            :create         nil
            :create-type    nil
            :events         nil
@@ -34,7 +34,7 @@
                               ;; tell the builder this is a composite control, ie made of multiple
                               ;; controls
                               (setf (attribute control "data-on-create")
-"(clog-plotly::json-plotly target
+"(clog-plotly:new-plot-plotly target
   \"[{x: [1, 2, 3, 4, 5],
            y: [1, 2, 4, 8, 16]}]\"
         \"{ margin: { t: 0 } }\")")
