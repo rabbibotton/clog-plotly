@@ -1,7 +1,7 @@
 
 (asdf/parse-defsystem:defsystem #:clog-plotly
   :description
-  "New CLOG System"
+  "Plotly plugin for CLOG"
   :author
   "some@one.com"
   :license
