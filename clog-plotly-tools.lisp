@@ -72,7 +72,7 @@
                             ,@clog-tools::*events-element*)
            ;; properties handled
            :properties     (,@clog-tools::*props-location*
-                            ,@clog-tools::*props-with-height*
+                            ,@clog-tools::*props-width-height*
                             ,@clog-tools::*props-text*
                             ,@clog-tools::*props-css*
                             ,@clog-tools::*props-colors*
