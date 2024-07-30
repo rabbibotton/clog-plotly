@@ -6,8 +6,6 @@
   "some@one.com"
   :license
   "BSD"
-  :version
-  "0.0.0"
   :serial
   t
   :depends-on
