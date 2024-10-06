@@ -237,7 +237,7 @@ on-plotlyto-image with string in url data form."))
 (defmethod init-clog-plotly ((obj clog-plotly-element))
   (check-type obj clog:clog-obj)
   (load-script (html-document (connection-data-item obj "clog-body"))
-    "https://cdn.plot.ly/plotly-2.14.0.min.js"))
+    "https://cdn.plot.ly/plotly-2.35.2.min.js"))
 
 (defgeneric attach-clog-plotly (clog-plotly-element)
   (:documentation "Initialize plugin"))
