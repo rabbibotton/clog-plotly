@@ -12,6 +12,7 @@
            move-traces-plotly extend-traces-plotly
            prepend-traces-plotly animate-plotly
            download-image-plotly to-image-plotly
+           set-on-plotly-click-point
            set-on-plotly-to-image set-on-plotly-afer-plot
            set-on-plotly-auto-size set-on-plotly-deselect
            set-on-plotly-redraw set-on-plotly-animated
@@ -72,6 +73,23 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Events - clog-plotly-element
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(defgeneric set-on-plotly-click-point (clog-plotly-element handler)
+  (:documentation "Set handler for receiving clicked points in a chart."))
+
+(defmethod set-on-plotly-click-point ((obj clog-plotly-element) handler)
+  (js-execute obj (format nil "
+~A.on('plotly_click', (data) => {
+  let p = data.points[0];
+  let d = { name: p.data.name, x: p.x, y: p.y };
+  $(~A).trigger('clog_plotly_click', JSON.stringify(d))
+})"
+                          (script-id obj)
+                          (script-id obj)))
+  (set-on-event-with-data obj "clog_plotly_click"
+                          (lambda (obj data)
+                            (when handler
+                              (funcall handler obj data)))))
 
 (defgeneric set-on-plotly-to-image (clog-plotly-element handler)
   (:documentation "Set handler for receiving the image result of a call to
