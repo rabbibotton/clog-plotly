@@ -82,11 +82,11 @@
 ~A.on('plotly_click', (data) => {
   let p = data.points[0];
   let d = { name: p.data.name, x: p.x, y: p.y };
-  $(~A).trigger('clog_plotly_click', JSON.stringify(d))
+  $(~A).trigger('clog_plotly_click_point', JSON.stringify(d))
 })"
                           (script-id obj)
                           (script-id obj)))
-  (set-on-event-with-data obj "clog_plotly_click"
+  (set-on-event-with-data obj "clog_plotly_click_point"
                           (lambda (obj data)
                             (when handler
                               (funcall handler obj data)))))
